@@ -56,5 +56,4 @@ The dataset used for this project contains various clinical and demographic attr
 - Behavioral and lifestyle features like smoking and contraceptive use significantly impact prediction accuracy.
 - Feature correlation highlights potential areas for targeted preventive healthcare strategies.
 
-## 📁 Project Structure
 
