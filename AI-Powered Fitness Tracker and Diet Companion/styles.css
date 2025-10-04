@@ -1,0 +1,786 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f9fafb;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+header .logo h1 {
+    font-size: 2em; /* Increased size for better visibility */
+    color: #e74c3c; /* Vibrant red */
+}
+
+/* Updated Navbar Styles */
+nav {
+    display: flex; /* Flexbox for better alignment */
+    gap: 20px; /* Even spacing between links */
+}
+
+nav a {
+    color: #fff; /* White text for better contrast */
+    text-decoration: none; /* Removes underline */
+    font-size: 1.1em; /* Slightly larger font size for readability */
+    font-weight: bold; /* Makes text stand out */
+    padding: 10px 15px; /* Added padding for clickable area */
+    border-radius: 5px; /* Rounded edges for a modern look */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+nav a:hover {
+    background-color: #e74c3c; /* Matches button and logo color */
+    color: #fff; /* Ensures visibility */
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.5); /* Adds a subtle hover shadow */
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(255, 87, 34, 0.8), rgba(255, 87, 34, 0.8)), url('hero-background.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 120px 5%; /* Adjusted padding for better responsiveness */
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px; /* Added spacing below the paragraph */
+}
+
+.get-started-button {
+    background-color: #e74c3c; /* Call to action button color */
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.5);
+    text-decoration: none;
+}
+
+.get-started-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(231, 76, 60, 0.7);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 5%; /* Adjusted for better responsiveness */
+}
+
+section h2 {
+    font-size: 2.4em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+}
+
+section h2::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #e74c3c;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* About FitLife360 Section */
+#about-fitlife360 {
+    background-color: #f3f4f6;
+    text-align: center;
+    color: #333;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 14rem;
+    max-width: 1500px;
+    margin: 0 auto; /* Centering the content */
+    align-items: center;
+    padding: 20px; /* Adding padding */
+}
+
+.about-images {
+    display: flex; /* Align images horizontally */
+    justify-content: center; /* Center the images */
+    gap: 20px; /* Space between images */
+}
+
+.about-img, .profile-img {
+    width: 250px; /* Set a smaller width for all images */
+    height: 300px; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    transition: transform 0.3s ease; /* Add hover effect */
+}
+
+.about-img:hover, .profile-img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Features Section */
+.features-section {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.feature {
+    width: 280px;
+    padding: 25px;
+    border: 1px solid #e74c3c;
+    border-radius: 12px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Testimonials Section */
+#testimonials {
+    background-color: #f3f4f6;
+    padding: 60px 0;
+    text-align: center;
+    color: #333;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Q&A Section */
+#qna {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.faq {
+    margin: 20px 0;
+}
+
+.faq-btn {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-btn:hover {
+    background-color: #c0392b;
+}
+
+.faq-content {
+    display: none;
+    padding: 10px 15px;
+    background-color: #f4f4f4;
+    border-left: 3px solid #e74c3c;
+    margin-top: 5px;
+    border-radius: 8px;
+}
+
+.faq-btn:focus + .faq-content,
+.faq-btn.active + .faq-content {
+    display: block;
+}
+
+/* Connected Apps Icons */
+.connected-apps-icons {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    justify-content: center; /* Centers the icons */
+    gap: 20px; /* Adds space between icons */
+    margin-top: 20px; /* Adds some spacing above the icons */
+}
+
+.app-icon {
+    width: 100px; /* Uniform icon width */
+    height: 100px; /* Uniform icon height */
+    border-radius: 12px; /* Rounded edges for all icons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures the border-radius is applied */
+    object-fit: cover; /* Scales and centers the image inside the container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #222;
+    color: #fff;
+}
+
+footer a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Login Section Enhancements */
+.auth-section {
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #e74c3c, #f39c12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-container.single-container {
+    max-width: 400px;
+    width: 100%;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.form-container h2 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.login-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-container input:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-container button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.forgot-links {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.forgot-links a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.forgot-links a:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f9fafb;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo h1 {
+    font-size: 2.2em;
+    color: #e74c3c;
+}
+
+header .logo p {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: -5px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Main Tracker Section */
+main {
+    padding: 40px 5%;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2.4em;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+main p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Section Cards */
+.tracker-section {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: left;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tracker-section h3 {
+    font-size: 1.6em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+form input,
+form textarea,
+form select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+form button {
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+/* Progress Bar */
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #f0f0f0;
+}
+
+progress::-webkit-progress-value {
+    background-color: #e74c3c;
+}
+
+/* Dark Mode Toggle */
+#dark-mode-toggle {
+    transform: scale(1.5);
+    margin-left: 10px;
+}
+
+/* Data Visualization */
+canvas {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer nav a {
+    color: #e74c3c;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer nav a:hover {
+    color: #fff;
+}
+/* Community Page Section */
+.community-section {
+    background-color: #f9fafb; /* Light background for contrast */
+    padding: 80px 5%; /* Ample padding for spacious layout */
+    text-align: center;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.community-section h2 {
+    font-size: 2.5em;
+    color: #e74c3c; /* Align with brand color */
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.community-section h2::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #e74c3c;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.community-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.community-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.community-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Specific size adjustments for challenge1.jpg and challenge2.jpg */
+img[src*="challenge1.jpg"],
+img[src*="challenge2.jpg"] {
+    width: 25%; /* Ensure it scales to the card's width */
+    height: 200px; /* Specific height adjustment */
+    object-fit: cover; /* Ensure the image retains aspect ratio without distortion */
+    border-radius: 8px; /* Match existing style */
+}
+
+.community-card h3 {
+    font-size: 1.5em;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.community-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.community-card a {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.community-card a:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Responsive Styles for Community Page */
+@media (max-width: 768px) {
+    .community-card {
+        width: 90%; /* Adapt to smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .community-section h2 {
+        font-size: 2em;
+    }
+}
+@media (max-width: 768px) {
+    img[src*="challenge1.jpg"],
+    img[src*="challenge2.jpg"] {
+        height: 150px; /* Smaller height for compact screens */
+    }
+}
+/* Profile Page Styles */
+.profile-header {
+    text-align: center;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.profile-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.profile-card button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-card button:hover {
+    background-color: #c0392b;
+}
+
+.profile-tracking,
+.profile-badges,
+.profile-streak {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.badges-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.badge img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#progress-graph {
+    height: 300px;
+    background: #f9fafb;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Placeholder styles for streak-calendar */
+#streak-calendar {
+    height: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+

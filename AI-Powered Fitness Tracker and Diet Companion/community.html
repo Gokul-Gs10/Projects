@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife360 - Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>FitLife360</h1>
+            <p>Join Our Vibrant Community</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tracker.html">Tracker</a>
+            <a href="community.html" class="active">Community</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <h2>Welcome to the Community</h2>
+            <p>Connect, inspire, and grow with fellow fitness enthusiasts!</p>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search posts or users...">
+        <button id="searchButton" class="btn">Search</button>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <h3>Featured Challenges</h3>
+        <div class="featured-container">
+            <div class="featured-item">
+                <img src="challenge1.jpg" alt="Challenge 1">
+                <p>30-Day Yoga Challenge</p>
+            </div>
+            <div class="featured-item">
+                <img src="challenge2.jpg" alt="Challenge 2">
+                <p>Step Up - Walk 10,000 Steps Daily</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Section -->
+    <main class="community-main">
+        <section class="posts-section">
+            <h3>Latest Posts</h3>
+            <div class="posts-container">
+                <!-- Dynamic posts added here -->
+            </div>
+            <button id="loadMore" class="btn">Load More</button>
+        </section>
+
+        <!-- Share Your Story -->
+        <section class="share-section">
+            <h3>Share Your Journey</h3>
+            <form id="postForm">
+                <textarea id="postContent" placeholder="Share your thoughts, progress, or tips..." rows="4" required></textarea>
+                <label for="postImage">Attach an Image:</label>
+                <input type="file" id="postImage" accept="image/*">
+                <button type="submit" class="btn">Post</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FitLife360. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Support</a>
+        </nav>
+    </footer>
+</body>
+</html>

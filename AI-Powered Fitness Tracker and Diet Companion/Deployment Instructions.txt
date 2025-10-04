@@ -1,0 +1,29 @@
+Deployment Instructions
+
+In order to run the files, here are few instructions:
+
+* server.js connects to the MongoDB 
+command: node server.js
+
+* script.js connects to the frontend
+command: node script.js
+
+* To display the webpage 
+command: start index.html
+
+* It redirects to main page, as we click get started we have to either register or Login to the tracker
+if wish to login, credentials:
+
+username: Gokul
+pass: 123
+
+then sample inputs: 
+Exercise type: Running
+Duration: 82
+Calories Burnt: 721
+Meal type: Dinner
+Macros: 33g Protein, 95g Carbs, 24g Fat
+Meal Category: (Anything according to user)
+Water Intake : 1.7
+Hours Slept: 8
+Sleep quality: Poor

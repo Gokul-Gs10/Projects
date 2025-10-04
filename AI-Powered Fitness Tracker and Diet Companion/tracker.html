@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife360 Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>FitLife360</h1>
+            <p>Your Health Companion</p>
+        </div>
+        <nav>
+            <a href="index.html" title="Go to Home Page">Home</a>
+            <a href="tracker.html" title="Access Tracker Page">Tracker</a>
+            <a href="community.html" title="Join the Community">Community</a>
+        </nav>
+    </header>
+
+    <!-- Main Tracker Section -->
+    <main class="tracker-main">
+        <h2>Track Your Health & Fitness</h2>
+        <p>Keep track of your daily activities and monitor your progress towards a healthier lifestyle.</p>
+
+        <!-- Combined Tracker Form -->
+        <section class="tracker-section card">
+            <h3>Health Tracker</h3>
+            <form id="combined-form">
+                <!-- Exercise Tracker -->
+                <label for="exercise">Exercise Type:</label>
+                <input type="text" id="exercise" name="exercise" placeholder="e.g., Running, Yoga, Cycling" aria-label="Enter exercise type" required>
+                
+                <label for="duration">Duration (minutes):</label>
+                <input type="text" id="duration" name="duration" min="0" placeholder="Duration" aria-label="Enter exercise duration" required>
+                
+                <label for="exercise-calories">Calories Burned:</label>
+                <input type="number" id="exercise-calories" name="exercise-calories" min="0" placeholder="Calories Burned" aria-label="Enter calories burned" required>
+
+                <!-- Nutrition Tracker -->
+                <label for="meal">Meal Type:</label>
+                <input type="text" id="meal" name="meal" placeholder="e.g., Breakfast, Lunch, Snack" aria-label="Enter meal type" required>
+                
+                <label for="calories-intake">Calories Intake:</label>
+                <input type="number" id="calories-intake" name="calories-intake" min="0" placeholder="Calories" aria-label="Enter calories intake" required>
+
+                <label for="macros">Macros (Protein, Carbs, Fat):</label>
+                <textarea id="macros" name="macros" placeholder="e.g., 20g Protein, 30g Carbs, 10g Fat" rows="2" aria-label="Enter macros information" required></textarea>
+                
+                <label for="meal-category">Meal Category:</label>
+                <select id="meal-category" name="meal-category" aria-label="Select meal category" required>
+                    <option value="veg">Vegetarian</option>
+                    <option value="non-veg">Non-Vegetarian</option>
+                </select>
+
+                <!-- Hydration Tracker -->
+                <label for="water">Water Intake (liters):</label>
+                <input type="number" id="water" name="water" step="0.1" min="0" placeholder="Liters" aria-label="Enter water intake in liters" required>
+                <progress value="0" max="3" id="hydration-progress" aria-label="Water intake progress"></progress>
+                <label for="hydration-progress">Daily Goal: 3L</label>
+
+                <!-- Sleep Tracker -->
+                <label for="sleep-hours">Hours Slept:</label>
+                <input type="number" id="sleep-hours" name="sleep-hours" min="0" placeholder="Hours" aria-label="Enter hours slept" required>
+                
+                <label for="sleep-quality">Sleep Quality:</label>
+                <select id="sleep-quality" name="sleep-quality" aria-label="Select sleep quality" required>
+                    <option value="excellent">Excellent</option>
+                    <option value="good">Good</option>
+                    <option value="fair">Fair</option>
+                    <option value="poor">Poor</option>
+                </select>
+
+                <button type="submit" aria-label="Log Data">Log Health Data</button>
+            </form>
+        </section>
+
+        <!-- Data Visualization (Graph) -->
+        <section class="tracker-section card">
+            <h3>Progress Overview</h3>
+            <canvas id="progressChart"></canvas>
+            
+        </section>
+
+        <section class="tracker-section card">
+            <h3>Diet Plan</h3>
+            <div id="dietPlanContainer" class="diet-plan-container">
+            </div>
+        </section>
+        <!-- Display MongoDB Data -->
+        <section class="tracker-section card">
+            <h3>Logged Data</h3>
+            <div id="data-container">
+                <!-- Fetched data will appear here -->
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 FitLife360. All rights reserved.</p>
+        <nav>
+            <a href="#" title="Privacy Policy">Privacy Policy</a> |
+            <a href="#" title="Terms of Service">Terms of Service</a> |
+            <a href="#" title="Support">Support</a>
+        </nav>
+    </footer>
+
+    <!-- Link to the JS file -->
+    <script>
+        // Handle combined form submission
+        document.getElementById("combined-form").addEventListener("submit", async function (e) {
+            e.preventDefault(); // Prevent form refresh
+    
+            const exercise = document.getElementById("exercise").value;
+            const duration = document.getElementById("duration").value;
+            const exerciseCalories = document.getElementById("exercise-calories").value;
+            const meal = document.getElementById("meal").value;
+            const caloriesIntake = document.getElementById("calories-intake").value;
+            const macros = document.getElementById("macros").value;
+            const mealCategory = document.getElementById("meal-category").value;
+            const water = document.getElementById("water").value;
+            const sleepHours = document.getElementById("sleep-hours").value;
+            const sleepQuality = document.getElementById("sleep-quality").value;
+            
+            const healthData = {
+                exercise,
+                duration,
+                exerciseCalories,
+                meal,
+                caloriesIntake,
+                macros,
+                mealCategory,
+                water,
+                sleepHours,
+                sleepQuality
+            };
+            console.log(healthData);
+            
+            try {
+                const response = await fetch("http://localhost:5000/api/log-data", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(healthData),
+                });
+    
+                if (response.ok) {
+                    alert("Health data logged successfully!");
+                    fetchLoggedData(); // Refresh the logged data section
+                    fetchProgressData(); // Fetch and update the progress chart after logging data
+                    fetchDietPlan();
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.error}`);
+                }
+            } catch (error) {
+                console.error("Error logging health data:", error);
+                alert("An unexpected error occurred. Please try again later.");
+            }
+        });
+    
+
+    function fetchDietPlan() {
+        fetch('http://localhost:5000/api/recommendation')
+            .then(response => response.json())
+            .then(data => {
+                const dietPlanContainer = document.getElementById('dietPlanContainer');
+                dietPlanContainer.innerHTML = ''; // Clear any existing content
+
+                const dietPlanHtml = `
+                    <p><strong>Diet:</strong> ${data.dietPlan || "N/A"}</p>
+                    <p><strong>Meal Suggestion:</strong> ${data.mealPlan || "N/A"}</p>
+                `;
+                dietPlanContainer.innerHTML = dietPlanHtml;
+            })
+            .catch(error => {
+                console.error('Error fetching diet plan:', error);
+                const dietPlanContainer = document.getElementById('dietPlanContainer');
+                dietPlanContainer.innerHTML = '<p class="error">Unable to fetch diet plan. Please try again later.</p>';
+            });
+    }
+        // Function to fetch logged data via Ajax
+        function fetchLoggedData() {
+            fetch('http://localhost:5000/api/data')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('data-container');
+                    container.innerHTML = ''; // Clear previous data
+                    console.log(data);
+                    data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `
+                            <p><strong>Exercise:</strong> ${item.exercise || "N/A"}</p>
+                            <p><strong>Calories Burned:</strong> ${item.exerciseCalories || "N/A"}</p>
+                            <p><strong>Meal Type:</strong> ${item.meal || "N/A"}</p>
+                            <p><strong>Calories Intake:</strong> ${item.caloriesIntake || "N/A"}</p>
+                            <p><strong>Sleep Hours:</strong> ${item.sleepHours || "N/A"}</p>
+                            <p><strong>Water Intake:</strong> ${item.water || "N/A"}</p>
+                            <hr>
+                        `;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    
+        // Fetch and display data for progress chart (AJAX-based)
+        let progressChartInstance = null;  // Store the instance of the chart
+
+function fetchProgressData() {
+    fetch('http://localhost:5000/api/progress')
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.date);
+            const exerciseData = data.map(item => item.exerciseCalories);
+            const mealData = data.map(item => item.caloriesIntake);
+            const waterData = data.map(item => item.water);
+
+            const ctx = document.getElementById('progressChart').getContext('2d');
+
+            // If the chart already exists, destroy it before creating a new one
+            if (progressChartInstance) {
+                progressChartInstance.destroy();
+            }
+
+            // Create a new chart
+            progressChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Calories Burned (Exercise)',
+                        data: exerciseData,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Calories Intake (Meals)',
+                        data: mealData,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Water Intake (Liters)',
+                        data: waterData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'category',
+                            labels: labels,
+                        },
+                    },
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching progress data:', error));
+}
+
+        // Initialize by fetching logged data and progress chart data
+        fetchLoggedData();
+        fetchProgressData();
+        fetchDietPlan();
+    </script>
+</body>
+</html>
