@@ -49,4 +49,3 @@ The notebook follows a structured workflow:
 - The accuracy improves consistently across federated rounds.
 - The notebook includes visualizations of **training accuracy**, **loss trends**, and **aggregation efficiency**.
 
-## 📁 Project Structure
